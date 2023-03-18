@@ -1,0 +1,54 @@
+{
+      "insert": "containerConf",
+      "documents": [
+          {
+            "businessType": "GAME",
+            "romType": "QCOM_QCS8250",
+            "config": {
+              "Image": "hm:v27",
+              "HostConfig": {
+                "Binds": [
+                  "/sys:/sys:ro",
+                  "/dev/tty0:/dev/ttyMSM0",
+                  "/data/hm/image/${imgVer}/system:/system:ro",
+                  "/data/hm/image/${imgVer}/product:/product:ro",
+                  "/data/hm/image/${imgVer}/vendor:/vendor:ro",
+                  "/data/hm/image/${imgVer}/odm:/odm:ro",
+                  "/data/hm/container${position}/data:/data"
+                ],
+                "CapAdd": [
+                  "All"
+                ],
+                "Tmpfs": {
+                  "/sys/fs/cgroup": ""
+                },
+                "Privileged": true,
+                "Memory": "2147483648",
+                "MemorySwap": -1,
+                "NetworkMode" : "hm-net"
+              }
+            }
+          },
+          {
+            "businessType": "GAME",
+            "config": {
+              "Image": "hm:v27",
+              "HostConfig": {
+                "Binds": [
+                  "/sys:/sys:ro",
+                  "/data/hm/container${position}/system:/system",
+                  "/data/hm/container${position}/vendor:/vendor:ro",
+                  "/data/hm/container${position}/persist:/persist:ro",
+                  "/data/hm/container${position}/data:/data",
+                  "/dev/tty0:/dev/ttyMSM0"
+                ],
+                "Privileged": true,
+                "Memory": "2147483648",
+                "MemorySwap": -1,
+                "NetworkMode" : "hm-net"
+              }
+            },
+            "romType": "QCOM_SDM845"
+          }
+      ]
+}

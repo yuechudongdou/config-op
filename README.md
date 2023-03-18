@@ -1,2 +1,1 @@
 # config-op
-config
